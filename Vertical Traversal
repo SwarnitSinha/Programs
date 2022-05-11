@@ -1,0 +1,50 @@
+ static ArrayList <Integer> verticalOrder(Node root)
+    {
+        // add your code here
+        ArrayList<Integer> list = new ArrayList<>();
+        Map<Integer,List<Integer>> map = new TreeMap<>();
+        // List<Integer> l = new ArrayList<>();
+        //for noting the level
+        Queue<Pair> q = new LinkedList<>();
+        q.add(new Pair(0,root));
+        // q.add(null);
+        while(!q.isEmpty()){
+            Pair p = q.poll();
+            Node temp = p.node;
+            
+            if(map.containsKey(p.hd)){
+                map.get(p.hd).add(temp.data);
+            }
+            else{
+                ArrayList<Integer> t = new ArrayList<>();
+                t.add(temp.data);
+                map.put(p.hd,t);
+            }
+                
+            
+            if(temp.left!=null){
+                q.add(new Pair(p.hd-1,temp.left));
+            }
+            if(temp.right!=null){
+                q.add(new Pair(p.hd+1,temp.right));
+            }
+        }
+        
+         for (Map.Entry<Integer, List<Integer>>
+                 entry : map.entrySet()){
+            list.addAll(entry.getValue());
+            // System.out.println(
+            //     "[" + entry.getKey()
+            //     + ", " + entry.getValue() + "]");
+        }
+        return list;
+    }
+    
+    static class Pair{
+        int hd;
+        Node node;
+        Pair(int hd,Node node){
+            this.hd = hd;
+            this.node = node;
+        }
+    }
