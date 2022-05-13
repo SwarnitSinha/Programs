@@ -1,0 +1,44 @@
+class Solution {
+    public Node connect(Node root) {
+        Queue<Node> q = new LinkedList<>();
+        if(root==null)return null;
+        
+        q.add(root);
+        q.add(null);
+        
+        //prev node and current node
+        Node prev=root;
+        boolean first = true;
+        
+        while(!q.isEmpty()){
+            
+            Node temp = q.poll();
+            if(first)prev = temp;
+            
+
+            if(temp==null){
+                if(q.isEmpty())break;
+                //new line process start here
+                prev.next=null;
+                first = true;
+                q.add(null);
+                //new line case process end here
+                continue;
+            }
+            
+            if(prev != temp){
+                prev.next = temp;
+            }
+            if(temp.left!=null){
+                q.add(temp.left);
+            }
+            if(temp.right!=null){
+                q.add(temp.right);
+            }
+            prev = temp;
+            first = false;
+        }
+        root.next = null;
+        return root;
+    }
+}
