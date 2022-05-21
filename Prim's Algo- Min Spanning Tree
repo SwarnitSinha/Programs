@@ -1,0 +1,47 @@
+class Solution
+{
+//learn how to implement Comparable
+    static class Pair implements Comparable<Pair>{
+        int d;//distance
+        int v;//vertex
+        Pair(int v, int d){
+            this.d = d;
+            this.v = v;
+        }
+        public int compareTo(Pair that){    
+            return this.d-that.d;    
+        } 
+    }
+    
+    //Function to find sum of weights of edges of the Minimum Spanning Tree.
+    static int spanningTree(int V, ArrayList<ArrayList<ArrayList<Integer>>> adj) 
+    {
+        
+        PriorityQueue<Pair> pq = new PriorityQueue<>();
+        boolean[] vis = new boolean[V];
+     
+        int ans = 0;
+        pq.add(new Pair(0,0));
+        while(pq.size()!=0){
+           
+            Pair p = pq.remove();
+            int v = p.v;
+            if(vis[v])continue;
+            vis[v] = true;
+            ans+=p.d;
+        
+            ArrayList<ArrayList<Integer>> neighbour = adj.get(v);
+            for(ArrayList<Integer> list : neighbour){
+                
+                if(!vis[list.get(0)]){
+                    int vertex = list.get(0);
+                    int dist = list.get(1);
+                   
+                    if(vis[vertex]==false)
+                        pq.add(new Pair(vertex,dist));
+                }
+            }
+        }
+        return ans;
+    }
+}
