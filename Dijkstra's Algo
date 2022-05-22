@@ -1,0 +1,47 @@
+class Solution
+{
+    static class Pair implements Comparable<Pair>{
+        int wt;//distance
+        int v;//vertex
+        Pair(int v, int wt){
+            this.wt = wt;
+            this.v = v;
+        }
+        public int compareTo(Pair that){    
+            return this.wt-that.wt;    
+        } 
+    }
+    //Function to find the shortest distance of all the vertices
+    //from the source vertex S.
+    static int[] dijkstra(int V, ArrayList<ArrayList<ArrayList<Integer>>> adj, int S)
+    {
+        // Write your code here
+        int dist[] = new int[V];
+        for(int i =0;i<V;i++){
+            dist[i] = Integer.MAX_VALUE;
+        }
+        dist[S] = 0;
+        PriorityQueue<Pair> pq = new PriorityQueue<Pair>();
+        pq.add(new Pair(S,0));
+        
+        
+        while(pq.size()>0){
+            
+            Pair curr = pq.poll();
+            int v = curr.v;
+            // System.out.println("sd");
+            
+            
+            ArrayList<ArrayList<Integer>> neighbour = adj.get(v);
+            for(ArrayList<Integer> list : neighbour){
+                // int vertex = list.get(0);
+                // int wt = list.get(1);
+                if((list.get(1)+dist[v])<dist[list.get(0)]){
+                    dist[list.get(0)] = list.get(1)+dist[v];
+                    pq.add(new Pair(list.get(0),dist[list.get(0)]));
+                }
+            }
+        }
+        return dist;
+    }
+}
