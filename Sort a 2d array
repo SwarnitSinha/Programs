@@ -1,0 +1,6 @@
+Arrays.sort(arr,(a,b)->Integer.compare(a[0],b[0]); // ascending order according to 1st column
+                              .compare(b[0],a[0]); //descending order according to 1st column
+                              
+                              .compare(a[1],b[1]); // ascending according to 2nd column
+                              
+                              
