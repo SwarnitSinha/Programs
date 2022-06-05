@@ -1,7 +1,7 @@
 Given an array a[] of size N which contains elements from 0 to N-1,
 you need to **find all the elements occurring more than once** in the given array.
 
-Return the list in sorted order 
+Return the _list in sorted order_ 
 
   Code :
   //OPTIMAL SOLUTION - Time O(n) ans Space O(1)
