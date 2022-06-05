@@ -1,0 +1,31 @@
+Given an array a[] of size N which contains elements from 0 to N-1,
+you need to **find all the elements occurring more than once** in the given array.
+
+Return the list in sorted order 
+
+  Code :
+  //OPTIMAL SOLUTION - Time O(n) ans Space O(1)
+  
+class Solution {
+    public static ArrayList<Integer> duplicates(int arr[], int n) {
+        
+        ArrayList<Integer> list = new ArrayList<Integer>();
+        
+        for(int i =0;i<n;i++){
+            int ind = arr[i]%n;
+            arr[ind] +=n;
+        }
+        for(int i =0;i<n;i++){
+            if((arr[i]/n)>1){
+                list.add(i);
+            }
+        }
+        
+        if(list.isEmpty())list.add(-1);
+        return list;
+      }
+}
+
+The concept is if an element becomes 2 times n or more it means n is added more than 2 times to it.
+It can **only occur if** there is two way to reach that index.
+that index is getting repeated.
