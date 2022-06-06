@@ -1,0 +1,33 @@
+Set Bits - 1 in binary representation
+
+16 - 10000
+No. of set bits in 16 is 1
+
+5 - 101
+No. of set bits in 5 is 2
+
+7 - 111
+No. of set bits in 7 is 3
+
+8 - 1000
+No. of set bits in 8 is 1
+
+OBSERVATION - Number of bits in power of 2 will be only 1 because binary is calulated using power of 2.
+
+  if a no. is power of 2
+  then num & (num-1) will always give 0
+  
+      CODE
+        class Solution {
+          public boolean isPowerOfTwo(int n) {
+            
+            if(n<=0) return false;
+            
+            if(n==1) return true;
+            
+            if ((n&(n-1))==0){
+              return true;
+            }
+            else return false;
+        }
+      }
