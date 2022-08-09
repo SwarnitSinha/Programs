@@ -34,13 +34,13 @@ BINARY SEARCH:   TC - O(N*logN)
       
       for(int i =0;i<nums.length;i++){
             if(i==0||list.get(list.size()-1)<nums[i]){
-                list.add(nums[i])
+                list.add(nums[i]);
             }
             else{
                 //search for the element
                 // if present do nothing if not change the successive index with the element
                 int index = search(list,nums[i]);
-                list.replace(index,nums[i]);
+                list.set(index,nums[i]);
                 
             }
       }
