@@ -9,8 +9,13 @@
         gfg.put("Quiz", "quiz.geeksforgeeks.org");
           
         // using for-each loop for iteration over Map.entrySet()
-        for (Map.Entry<String,String> entry : gfg.entrySet()) 
+        for (Map.Entry<String,String> entry : gfg.entrySet()){
+         
+            " IMPORTANT WAY TO GET KEY AND VALUE :- entry.getKey()  &  entry.getValue()"
+             
+             
             System.out.println("Key = " + entry.getKey() + ", Value = " + entry.getValue());
+        }
     }
 
 Output: 
