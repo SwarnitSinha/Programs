@@ -1,4 +1,11 @@
- public static void main(String[] arg)
+METHOD 1
+ for(int key: map.keySet()){   // THIS WILL GET ALL THE KEYS ONE BY ONE
+			freqarr[map.get(key)]++; 
+		}
+
+
+METHOD 2
+public static void main(String[] arg)
     {
         Map<String,String> gfg = new HashMap<String,String>();
       
